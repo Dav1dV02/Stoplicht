@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body background="verkeer/kruising.png">
+<form>
+    <h1>autootje2.html</h1>
+    <p>een auto automatisch laten rijden</p>
+    <p>druk op de juiste knop (druk maar een keer)</p>
+    <input type="button" value="start" onclick="starten()">
+    <input type="button" value="stop" onclick="stop()">
+    <input type="button" value="opnieuw" onclick="opnieuw()">
+    <img id="auto" src="verkeer/autogroen.png" width="40px" height="80px">
+</form>
+
+<script>
+    var rijden;
+    var auto = document.getElementById('auto');
+    auto.style.position = 'absolute';
+    auto.style.left = '650px';
+    auto.style.right = '800px';
+
+    function starten() {
+        auto.style.top = parseInt(auto.style.top) - 0.001 + 'px';
+        rijden= setTimeout(starten, 10);
+    }
+
+    function stop() {
+        clearTimeout(rijden);
+    }
+
+    function opnieuw() {
+        clearTimeout(rijden);
+        auto.style.top = '800px';
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verkeer</title>
+</head>
+<body background="verkeer/kruising.png">
+<form>
+    <h1>verkeer 1.html</h1>
+    <p>de auto automatisch laten rijden</p>
+    <input type="button" value="start" onclick="starten()">
+    <input type="button" value="stop" onclick="stop()">
+    <!--<input type="button" value="opnieuw" onclick="opnieuw()">-->
+    <img id="auto" src="verkeer/autogroen.png" width="40px" height="80px">
+</form>
+
+<script>
+    var rijden;
+    var auto = document.getElementById('auto');
+    auto.style.position = 'absolute';
+    auto.style.left = '650px';
+    auto.style.right = '800px';
+
+    function starten() {
+        auto.style.top = parseInt(auto.style.top) - 5 + 'px';
+        rijden= setTimeout(starten, 10);
+
+    }
+
+    function stop() {
+        clearTimeout(rijden);
+    }
+
+    function opnieuw() {
+        clearTimeout(rijden);
+        auto.style.top = '800px';
+    }
+</script>
+<form>
+    <p>automatisch werkend stoplicht</p>
+    <input type="button" value="aanzetten" onclick="aanzetten()">
+    <input type="button" value="knipperen" onclick="knipperen()">
+    <input type="button" value="uitzetten" onclick="uitzetten()">
+    <img id="stoplicht" src="verkeer/stoplichtuit.png" width="20px" height="40px">
+</form>
+<script>
+    var werken;
+    var buitenwerking;
+    var stoplicht = document.getElementById('stoplicht');
+    stoplicht.style.position='absolute';
+    stoplicht.style.left='715px';
+    stoplicht.style.right='510px';
+
+    function aanzetten() {
+        clearTimeout(buitenwerking);
+        maakRood();
+        werken = setTimeout(maakGroen, 4000);
+        werken = setTimeout(maakGeel, 8000);
+        werken = setTimeout(aanzetten, 10000);
+    }
+    function knipperen() {
+        clearTimeout(werken);
+        maakGeel();
+        buitenwerking = setTimeout(ZetUit, 500);
+        buitenwerking = setTimeout(knipperen, 1000);
+    }
+    function uitzetten() {
+        ZetUit();
+        clearTimeout(buitenwerking);
+        clearTimeout(werken);
+    }
+    function maakRood() {
+        stoplicht.src="verkeer/stoplichtrood.png";
+    }
+    function maakGeel() {
+        stoplicht.src="verkeer/stoplichtgeel.png";
+    }
+    function maakGroen() {
+        stoplicht.src="verkeer/stoplichtgroen.png";
+    }
+    function ZetUit() {
+        stoplicht.src="verkeer/stoplichtuit.png";
+    }
+
+</script>
+</body>
+</html>

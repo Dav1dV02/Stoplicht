@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stoplicht</title>
+</head>
+<body>
+<form>
+    <h1>Stoplicht</h1>
+    <p>verwisselen van plaatjes</p>
+    <img id="stoplicht" onclick="veranderStoplicht()" src="verkeer/stoplichtrood.png" >
+    <p>Klik om het stoplicht te veranderen</p>
+</form>
+<script>
+    function veranderStoplicht() {
+        var stoplicht = document.getElementById("stoplicht");
+        if(stoplicht.src.match("stoplicht")){
+            stoplicht.src="verkeer/stoplichtgroen.png";
+        }else{
+            stoplicht.src="verkeer/stoplichtrood.png";
+        }
+
+    }
+</script>
+</body>
+</html>
